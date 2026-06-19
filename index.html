@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 信息卡片</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+        body{
+            background:linear-gradient(145deg,#fdf0e2 0%,#fce3cd 40%,#f7d4b8 100%);
+            min-height:100vh;
+            display:flex;align-items:center;justify-content:center;
+            padding:2rem 1.5rem;
+        }
+        .page-wrap{
+            max-width:1160px;width:100%;
+            display:flex;flex-direction:column;gap:2.2rem;
+        }
+        /* 主卡片 — 视觉与标识 */
+        .hero-card{
+            background:rgba(255,255,255,0.85);
+            backdrop-filter:blur(4px);
+            border-radius:3rem;
+            padding:2.8rem 2.5rem;
+            box-shadow:0 20px 40px -12px rgba(160,100,60,0.25);
+            display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+            transition:all 0.2s ease;
+        }
+        .hero-text{
+            flex:2 1 280px;
+        }
+        .hero-text h1{
+            font-size:2.6rem;font-weight:600;letter-spacing:-0.02em;
+            color:#3d2b1d;
+            line-height:1.2;
+        }
+        .hero-text h1 small{
+            display:block;font-size:1.1rem;font-weight:400;color:#7b5f47;margin-top:0.6rem;
+            letter-spacing:0.02em;
+        }
+        .hero-badge{
+            flex:0 0 auto;
+            background:#f1dccb;padding:0.75rem 1.8rem;border-radius:60px;
+            color:#4d3422;font-weight:500;font-size:1rem;
+            box-shadow:inset 0 1px 3px rgba(255,255,245,0.7),0 6px 12px -8px rgba(110,70,30,0.3);
+            white-space:nowrap;
+        }
+        .hero-badge span{background:#b68a6b;color:#fff;border-radius:40px;padding:0.15rem 0.8rem;margin-left:0.3rem;font-size:0.85rem;}
+
+        /* 卡片网格 */
+        .card-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+            gap:1.8rem;
+        }
+        .info-card{
+            background:#fff;
+            border-radius:2.2rem;
+            padding:1.8rem 1.8rem 2rem;
+            box-shadow:0 12px 24px -8px rgba(140,90,55,0.12);
+            transition:transform 0.15s, box-shadow 0.2s;
+            display:flex;flex-direction:column;
+        }
+        .info-card:hover{transform:translateY(-4px);box-shadow:0 18px 32px -12px rgba(120,70,30,0.2);}
+        .info-card .card-icon{
+            width:48px;height:48px;border-radius:18px;
+            background:linear-gradient(145deg,#f7dcc8,#ebc9ae);
+            display:flex;align-items:center;justify-content:center;
+            font-size:1.5rem;margin-bottom:1rem;color:#5c3f2b;
+        }
+        .info-card h3{
+            font-size:1.3rem;font-weight:600;color:#2c1d12;
+            margin-bottom:0.6rem;
+            letter-spacing:-0.01em;
+        }
+        .info-card p{
+            font-size:0.95rem;line-height:1.6;color:#4a382a;
+            flex:1;
+        }
+        .info-card .meta-tag{
+            display:inline-block;margin-top:1rem;
+            background:#f2e7de;border-radius:50px;padding:0.2rem 1rem;
+            font-size:0.8rem;color:#5f4433;align-self:flex-start;
+        }
+
+        /* 链接段落卡片——自然嵌入 */
+        .link-card{
+            background:#fff;
+            border-radius:2.2rem;
+            padding:1.8rem 2.2rem 2rem;
+            box-shadow:0 12px 24px -8px rgba(140,90,55,0.12);
+        }
+        .link-card p{
+            font-size:1rem;line-height:1.7;color:#2f2219;
+            margin-bottom:0.6rem;
+        }
+        .link-card .highlight{
+            background:linear-gradient(120deg,#fae4d4 0%,#fae4d4 40%,transparent 80%);
+            padding:0 0.2rem;
+        }
+        .link-card a{
+            display:inline;color:#8b5b3a;font-weight:600;text-decoration:none;
+            border-bottom:2px solid #dfc3ae;padding-bottom:1px;
+            transition:border 0.15s, background 0.15s;
+            border-radius:0 0 6px 6px;
+        }
+        .link-card a:hover{
+            border-bottom-color:#b27f5d;background:#f7e7db;
+        }
+
+        /* 辅助信息：faq摘要+提示 */
+        .meta-foot{
+            display:flex;flex-wrap:wrap;gap:1.5rem;
+            background:rgba(255,255,245,0.65);
+            backdrop-filter:blur(2px);
+            border-radius:2.5rem;
+            padding:1.5rem 2rem;
+            align-items:flex-start;
+        }
+        .faq-mini{
+            flex:2 1 280px;
+        }
+        .faq-mini h4{
+            font-size:1rem;font-weight:600;color:#3a2a1c;
+            margin-bottom:0.5rem;letter-spacing:0.3px;
+        }
+        .faq-mini ul{
+            list-style:none;padding:0;
+        }
+        .faq-mini li{
+            font-size:0.9rem;color:#4f3b2c;padding:0.25rem 0;
+            border-bottom:1px dashed #dccfc3;
+            display:flex;gap:0.6rem;
+        }
+        .faq-mini li::before{
+            content:"▹";color:#b68b6e;font-weight:bold;
+        }
+        .reminder{
+            flex:0 1 auto;background:#e7d2c0;border-radius:60px;
+            padding:0.6rem 1.5rem;font-size:0.9rem;color:#3e2d1f;font-weight:450;
+            box-shadow:inset 0 1px 4px #fcf3ea;
+            white-space:nowrap;
+        }
+
+        /* 响应式 */
+        @media (max-width:640px){
+            body{padding:1.2rem;}
+            .hero-card{padding:2rem 1.5rem;flex-direction:column;align-items:start;gap:1rem;}
+            .hero-text h1{font-size:2rem;}
+            .hero-badge{white-space:normal;font-size:0.9rem;}
+            .card-grid{grid-template-columns:1fr;}
+            .link-card{padding:1.5rem;}
+            .meta-foot{flex-direction:column;padding:1.2rem 1.5rem;}
+            .reminder{white-space:normal;}
+        }
+        @media (min-width:641px) and (max-width:900px){
+            .card-grid{grid-template-columns:repeat(2,1fr);}
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <div class="hero-text">
+            <h1>爱游戏 · 再次遇见<small>收藏 · 回访 · 持续关注</small></h1>
+        </div>
+        <div class="hero-badge">
+            🎲 内容索引 <span>+</span>
+        </div>
+    </div>
+
+    <!-- 信息卡片（用途卡片 + 适合人群 + 场景） -->
+    <div class="card-grid">
+        <div class="info-card">
+            <div class="card-icon">📌</div>
+            <h3>收藏级入口</h3>
+            <p>为经常回访的访客设计。将喜爱的站点固定至书签，或直接保存至主屏幕。<br>避免在搜索中反复查找，让再次访问更直觉。</p>
+            <span class="meta-tag">浏览器 · 书签栏</span>
+        </div>
+        <div class="info-card">
+            <div class="card-icon">👥</div>
+            <h3>适合哪些人</h3>
+            <p>对内容有持续期待的玩家、希望保持信息同步的轻度用户、以及寻找稳定访问路径的日常使用者。<br>不需要注册，打开即用。</p>
+            <span class="meta-tag">轻量 · 零门槛</span>
+        </div>
+        <div class="info-card">
+            <div class="card-icon">🔄</div>
+            <h3>场景提要</h3>
+            <p>工作间隙、通勤途中、或是每日固定刷新。<br>通过一次收藏，就能绕开碎片化推送，直接触达感兴趣的信息。</p>
+            <span class="meta-tag">重复访问友好</span>
+        </div>
+    </div>
+
+    <!-- 自然链接段落（嵌入 “爱游戏” 链接） -->
+    <div class="link-card">
+        <p>
+            <span class="highlight">不少用户在初次访问后，会通过“再次访问”的方式保持联系。</span>
+            将 <a href="https://homemain-i-game.com.cn">爱游戏</a> 加入浏览器书签或移动设备主屏幕，即可在需要时快速抵达，无需依赖临时链接或第三方聚合。
+        </p>
+        <p>
+            对持续关注信息更新的使用者而言，稳定的入口比频繁搜索更有效率。页面结构和内容会随阶段调整，适合每隔一段时间回来看一看。
+        </p>
+    </div>
+
+    <!-- FAQ摘要 + 提示区块 -->
+    <div class="meta-foot">
+        <div class="faq-mini">
+            <h4>常见想法摘要</h4>
+            <ul>
+                <li>页面会定期更新内容方向吗？—— 是的，保持信息密度和结构变化。</li>
+                <li>是否需要登录或个人信息？—— 不需要，直接浏览即可。</li>
+                <li>推荐使用什么方式收藏？—— 浏览器书签 / 主屏幕添加。</li>
+            </ul>
+        </div>
+        <div class="reminder">
+            ⚡ 提示：刷新或重新访问时，内容部分可能变化
+        </div>
+    </div>
+
+    <!-- 底部轻提示（非必须，但增加节奏） -->
+    <div style="text-align:right;font-size:0.8rem;color:#7a604b;opacity:0.7;padding:0 0.3rem 0.2rem;">
+        <span>信息卡片 · 简洁专业 · 持续回访</span>
+    </div>
+
+</div>
+</body>
+</html>
