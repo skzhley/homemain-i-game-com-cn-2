@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品说明 · B体育</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf8f3;
+      font-family: 'Georama', 'Noto Sans SC', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #2e2b28;
+      line-height: 1.7;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: rgba(255, 253, 248, 0.88);
+      padding: 2.8rem 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03), 0 4px 8px rgba(0, 0, 0, 0.02);
+      backdrop-filter: blur(2px);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 490;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+      color: #1f1c19;
+      border-left: 4px solid #d4c9b5;
+      padding-left: 1.2rem;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #6b635b;
+      margin-bottom: 2.4rem;
+      font-weight: 390;
+      letter-spacing: 0.3px;
+    }
+
+    .abstract {
+      background: #f3efe8;
+      padding: 1.5rem 1.8rem;
+      border-radius: 18px;
+      margin-bottom: 2.6rem;
+      font-size: 1rem;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid #e6dfd5;
+    }
+
+    .abstract p:first-child {
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 460;
+      margin-top: 2.6rem;
+      margin-bottom: 1rem;
+      color: #332e28;
+      letter-spacing: -0.01em;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid #e1d9cd;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-card {
+      background: #fffffffb;
+      border-radius: 20px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
+      border: 1px solid #efe9e0;
+    }
+
+    .highlight-card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #3b342e;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .highlight-card p {
+      font-size: 0.95rem;
+      color: #524b44;
+    }
+
+    .quote-block {
+      background: #ede8df;
+      padding: 1.4rem 2rem;
+      border-radius: 20px 20px 20px 4px;
+      margin: 2rem 0;
+      font-style: normal;
+      border-left: 6px solid #b8aa93;
+      color: #3c3530;
+    }
+
+    .quote-block p {
+      margin-bottom: 0.4rem;
+    }
+
+    .quote-block .attribution {
+      font-size: 0.9rem;
+      color: #6b6257;
+      margin-top: 0.6rem;
+      letter-spacing: 0.2px;
+    }
+
+    .scenario-list {
+      list-style: none;
+      margin: 1.2rem 0 1.8rem;
+    }
+
+    .scenario-list li {
+      padding: 0.75rem 0 0.75rem 1.8rem;
+      position: relative;
+      border-bottom: 1px dashed #e2dad0;
+      font-size: 0.98rem;
+    }
+
+    .scenario-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #9b8b78;
+      font-weight: 400;
+    }
+
+    .notice-box {
+      background: #f5f1ea;
+      border: 1px solid #d8cfc2;
+      border-radius: 18px;
+      padding: 1.4rem 1.8rem;
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.4rem 1rem;
+    }
+
+    .notice-label {
+      font-weight: 470;
+      background: #d9cfc0;
+      color: #2a2621;
+      padding: 0.15rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-right: 0.2rem;
+    }
+
+    .notice-box p {
+      flex: 1;
+      min-width: 200px;
+      font-size: 0.95rem;
+    }
+
+    .faq-mini {
+      margin-top: 2.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid #ded6ca;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 510;
+      color: #2c2721;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      font-size: 0.95rem;
+      color: #5a5249;
+      padding-left: 0.8rem;
+    }
+
+    .inline-link {
+      color: #6a5c4b;
+      text-decoration: none;
+      font-weight: 460;
+      border-bottom: 1px solid #c4b7a5;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #2b241e;
+      border-bottom-color: #2b241e;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e4dbd0;
+      margin: 2.2rem 0 0.8rem;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #857b6f;
+      text-align: center;
+      margin-top: 1.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 1.2rem; }
+      .container { padding: 1.8rem 1.2rem; }
+      h1 { font-size: 1.9rem; padding-left: 0.9rem; }
+      .highlight-grid { grid-template-columns: 1fr; }
+      .quote-block { padding: 1rem 1.5rem; }
+      .notice-box { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>B体育 · 产品摘要</h1>
+  <div class="subhead">从内容结构到使用场景的简明说明</div>
+
+  <div class="abstract">
+    <p><strong>B体育</strong> 围绕体育资讯与赛事内容展开，侧重信息聚合与呈现效率。平台关注内容的清晰度、更新节奏与多维度覆盖，而非单纯提供即时比分或博彩功能。以下从产品特征、适用场景及注意事项三部分进行说明。</p>
+    <p>本文基于对关键词背后主题的理解，提供克制的产品视角。所有信息均以实事求是的方式表述。</p>
+  </div>
+
+  <h2>▍ 产品亮点</h2>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <h3>📋 结构化内容</h3>
+      <p>赛事数据、队伍动态与摘要以卡片和列表形式呈现，减少无效跳转。信息层级经过梳理，主力内容可在同一界面完成浏览。</p>
+    </div>
+    <div class="highlight-card">
+      <h3>⏱️ 更新节奏明确</h3>
+      <p>内容按日或按轮次刷新，不堆砌陈旧信息。关键赛事前后保持固定更新窗口，避免信息过载。</p>
+    </div>
+    <div class="highlight-card">
+      <h3>📎 低干扰界面</h3>
+      <p>页面元素克制，无自动播放视频或弹窗。广告位限缩至最低限度，保证阅读连贯性。</p>
+    </div>
+    <div class="highlight-card">
+      <h3>🌐 多终端适配</h3>
+      <p>排版优先考虑文字可读性，在移动设备上同样维持舒适的字体大小与间距。无强制横屏或复杂手势。</p>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <p>“内容平台的本质是降低获取信息的成本，而非增加注意力的负担。产品设计应服务于信息的清晰传递，而不是用交互复杂度替代内容质量。”</p>
+    <div class="attribution">—— 产品笔记 · 信息架构原则</div>
+  </div>
+
+  <h2>▍ 典型使用场景</h2>
+  <ul class="scenario-list">
+    <li><strong>赛前摘要</strong> — 浏览对阵双方的近期表现与关键数据，快速建立背景认知。</li>
+    <li><strong>赛后回顾</strong> — 查看结果统计与简短复盘，无需观看全场录像即可了解要点。</li>
+    <li><strong>多联赛追踪</strong> — 同时关注不同联赛/项目的用户，可通过统一信息流筛选关注内容。</li>
+    <li><strong>淡季参考</strong> — 非赛事密集期，平台仍保留历史数据与专题文章，可供回溯或分析。</li>
+  </ul>
+
+  <div class="notice-box">
+    <span class="notice-label">注意</span>
+    <p>本平台聚焦内容分发与信息整理，不涉及任何形式的实时投注、资金交易或概率预测。所有数据仅供一般性参考，具体决策请结合多方信源。如需查阅完整功能，可访问 <a href="https://pages-bsports.com" class="inline-link">B体育</a> 了解详情。</p>
+  </div>
+
+  <h2>▍ 使用建议</h2>
+  <p style="margin-bottom:0.8rem;">为获得较完整的使用体验，建议按以下方式操作：</p>
+  <ul class="scenario-list" style="margin-top:0.2rem;">
+    <li>优先使用 <strong>分类筛选</strong> 缩小内容范围，避免一次性加载过多条目。</li>
+    <li>对长期关注的联赛或队伍，可利用 <strong>收藏/关注</strong> 功能（如平台提供）建立个人内容池。</li>
+    <li>移动端浏览时开启 <strong>深色模式</strong>（若支持），降低长时间阅读的视觉疲劳。</li>
+    <li>定期清理浏览器缓存，确保内容版本与样式为最新。</li>
+  </ul>
+
+  <div class="faq-mini">
+    <h2 style="border-bottom-width:1px; margin-top:0;">▍ 常见疑问简答</h2>
+    <div class="faq-item">
+      <strong>B体育 是否提供实时数据接口？</strong>
+      <p>目前以静态内容与定时更新为主，未开放公开 API。数据更新频率视赛事密度而定，通常为每日 1–3 次。</p>
+    </div>
+    <div class="faq-item">
+      <strong>是否需要注册才能阅读内容？</strong>
+      <p>绝大部分文章与摘要可直接浏览。部分功能（如评论、收藏）可能需要创建账户。<a href="https://pages-bsports.com" class="inline-link">B体育</a> 的具体注册政策以页面说明为准。</p>
+    </div>
+    <div class="faq-item">
+      <strong>内容来源是否标注？</strong>
+      <p>平台尽可能在文章内注明数据或引用来源。对于外部转载的内容，均保留原始出处信息。</p>
+    </div>
+  </div>
+
+  <hr>
+  <div class="footer-note">
+    页面内容基于公开信息整理 · 表述力求客观<br>
+    产品方向以 <a href="https://pages-bsports.com" class="inline-link">B体育</a> 实际呈现为准
+  </div>
+</div>
+</body>
+</html>
